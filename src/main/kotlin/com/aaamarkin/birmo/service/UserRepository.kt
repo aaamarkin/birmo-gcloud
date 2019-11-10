@@ -1,6 +1,6 @@
 package com.aaamarkin.birmo.service
 
-//import com.google.firebase.cloud.FirestoreClient;
+import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service
 import java.util.concurrent.ExecutionException
 import com.aaamarkin.birmo.model.PlayerModel
@@ -25,22 +25,22 @@ class UserRepositoryImpl: UserRepository {
 
     @Throws(ExecutionException::class, InterruptedException::class)
     private fun GetOrCreateUserInfo(uid: String): PlayerModel {
-//        val db = FirestoreClient.getFirestore()
-//
-//        val users = db.collection("users")
-//        // Create a query against the collection.
-//        val docRef = users.document(uid)
-//        // retrieve  query results asynchronously using query.get()
-//        val futureSnapshot = docRef.get()
-//        val document = futureSnapshot.get()
+        val db = FirestoreClient.getFirestore()
+
+        val users = db.collection("users")
+        // Create a query against the collection.
+        val docRef = users.document(uid)
+        // retrieve  query results asynchronously using query.get()
+        val futureSnapshot = docRef.get()
+        val document = futureSnapshot.get()
 
         var user: PlayerModel? = null
-//        if (document.exists()) {
-//            user = document.toObject(PlayerModel::class.java)
-//        } else {
-//            user = CreateDefaultUserInfo()
-//            val futureResult = db.collection("users").document(uid).set(user!!)
-//        }
+        if (document.exists()) {
+            user = document.toObject(PlayerModel::class.java)
+        } else {
+            user = CreateDefaultUserInfo()
+            val futureResult = db.collection("users").document(uid).set(user!!)
+        }
 
         return user!!
     }

@@ -21,7 +21,7 @@ class MessageController {
 
     @RequestMapping("/message")
     fun message(): Message {
-//        userRepository.GetUserInfo("test_user");
+        userRepository.GetUserInfo("test_user");
         return Message("Hello from Google Cloud ${hostProperties.local}", "High")
     }
 }

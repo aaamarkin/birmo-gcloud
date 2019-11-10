@@ -17,13 +17,13 @@ class FirebaseConfig {
 
     @PostConstruct
     fun init() {
-        FirebaseApp.initializeApp(localOptions());
-        if (true){
-            FirebaseApp.initializeApp(localOptions());
-        } else {
-            FirebaseApp.initializeApp(cloudOptions());
-        }
-
+//        FirebaseApp.initializeApp(localOptions());
+//        if (hostProperties.local){
+//            FirebaseApp.initializeApp(localOptions());
+//        } else {
+//            FirebaseApp.initializeApp(cloudOptions());
+//        }
+        FirebaseApp.initializeApp(cloudOptions());
     }
 
     @Throws(IOException::class)
